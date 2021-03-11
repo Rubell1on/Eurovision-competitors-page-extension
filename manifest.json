@@ -1,0 +1,17 @@
+{
+	"manifest_version": 2,
+	"name": "Eurovision bets page extension",
+	"description": "Extension adds ability to sort competitiors and adds YouTube links column",
+	"version": "1.0.0",
+	"icons": {"128": "./IMG/icon_128.png"},
+	"browser_action": {
+		"default_icon": "./IMG/icon_128.png",
+		"default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+          "matches": ["https://euroinvision.com/Eurovision/Odds/eurovisionodds.html"],
+          "js": ["./JS/EurovisionExtension.js", "./JS/index.js"]
+        }
+      ]
+}

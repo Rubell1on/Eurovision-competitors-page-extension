@@ -1,0 +1,27 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.extension__popup {
+    padding: 10px 12px;
+    width: 460px;
+    box-sizing: border-box;
+}
+
+.extension__header {
+    text-align: center;
+}
+
+.extension__icon {
+    height: 32px;
+}
+
+.extension__list {
+    margin-left: 16px;
+    font-size: 16px;
+}
+
+.extension__description {
+    font-size: 16px;
+}
