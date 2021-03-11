@@ -1,7 +1,7 @@
 Eurovision competitors page extension
 =============================
 
-> First of all there are not official extension!
+> First of all this extension is not official!
 
 Main info
 ---------
