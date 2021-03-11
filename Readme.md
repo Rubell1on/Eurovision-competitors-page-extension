@@ -1,4 +1,4 @@
-Eurovision competitors page extension
+Eurovision competitors page Google Chrome extension
 =============================
 
 > First of all this extension is not official!
