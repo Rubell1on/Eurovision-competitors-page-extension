@@ -8,7 +8,7 @@ class EurovisionExtension {
         const bookmakersList = [...bookmakersRow].slice(2);
         
         const competitorsList = [...tbody.children];
-
+        addSearchField(table);
         setYouTubeLinks(competitorsList);
         setBookmakersSortButtons(bookmakersList)
 
@@ -39,6 +39,62 @@ class EurovisionExtension {
                     return 0;
                 }
             }
+        }
+
+        function addSearchField(table) {
+            const parent = table.parentNode;
+            if (parent) {
+                const searchFieldLabel = document.createElement('label');
+                searchFieldLabel.innerText = "Search field";
+                searchFieldLabel.className = "search__label";
+                searchFieldLabel.htmlFor = "search";
+                searchFieldLabel.style.textAlign = "left";
+                searchFieldLabel.style.display = "inline-block";
+
+                const searchField = document.createElement('input');
+                searchField.type = "text";
+                searchField.className = "search__field";
+                searchField.id = "search";
+                searchField.style.display = "block";
+
+                searchFieldLabel.append(searchField);
+                
+                const searchButton = document.createElement('button');
+                searchButton.type = 'submit';
+                searchButton.className = "search__submit";
+                searchButton.innerText = "Search";
+                searchButton.style.display = "inline-block";
+
+                const searchForm = document.createElement("form");
+                searchForm.className = "search__form";
+                searchForm.style.float = "left";
+                searchForm.style.marginLeft = "15px";
+
+                searchForm.addEventListener("submit", function(e) {
+                    e.preventDefault();
+                    const temp = [...competitorsList];
+                    if (searchField.value) {
+                        const r = new RegExp(`${searchField.value}`,"g");
+                        const filteredList = temp.filter(row => {
+                            const nameNode = row.children[2].children[0];
+                            const countryName = nameNode.childNodes[1]?.nodeValue.trim();
+                            const authorName = nameNode.childNodes[2]?.innerText;
+
+                            return r.test(countryName) || r.test(authorName) ? true : false;
+                        });
+
+                        temp.forEach(c => c.remove());
+                        filteredList.forEach(c => tbody.append(c));
+                    } else {
+                        temp.forEach(c => c.remove());
+                        [...competitorsList].forEach(c => tbody.append(c));
+                    }
+                });
+
+                searchForm.append(searchFieldLabel);
+                searchForm.append(searchButton);
+                parent.prepend(searchForm);  
+            }          
         }
 
         function addYouTubeLinkColumn(bookmakersRow) {
