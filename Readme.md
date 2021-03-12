@@ -8,4 +8,5 @@ Main info
 
 This extension adds on [eurovision competitors page](https://euroinvision.com/Eurovision/Odds/eurovisionodds.html):
 - ability to sort competitiors by bookmaker;
-- YouTube links column.
+- YouTube links column;
+- Search competitor via country, composer or song name.
