@@ -67,18 +67,16 @@ class EurovisionExtension {
 
                 const searchForm = document.createElement("form");
                 searchForm.className = "search__form";
-                searchForm.style.float = "left";
-                searchForm.style.marginLeft = "15px";
 
                 searchForm.addEventListener("submit", function(e) {
                     e.preventDefault();
                     const temp = [...competitorsList];
                     if (searchField.value) {
-                        const r = new RegExp(`${searchField.value}`,"g");
+                        const r = new RegExp(`${searchField.value.toLowerCase()}`,"g");
                         const filteredList = temp.filter(row => {
                             const nameNode = row.children[2].children[0];
-                            const countryName = nameNode.childNodes[1]?.nodeValue.trim();
-                            const authorName = nameNode.childNodes[2]?.innerText;
+                            const countryName = nameNode.childNodes[1]?.nodeValue.trim().toLowerCase();
+                            const authorName = nameNode.childNodes[2]?.innerText.toLowerCase();
 
                             return r.test(countryName) || r.test(authorName) ? true : false;
                         });
