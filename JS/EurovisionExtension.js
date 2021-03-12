@@ -70,8 +70,10 @@ class EurovisionExtension {
                 const competitorNode = c.children[2];
                 const linkNode = competitorNode.children[0];
                 const spanNode = linkNode.children[1];
+
+                const text = spanNode?.innerText;
                 
-                if (spanNode?.innerText) {
+                if (text && text.split('-').length > 1) {
                     const youtubeLinkNode = document.createElement("a");
                     youtubeLinkNode.href = `https://www.youtube.com/results?search_query=${spanNode.innerText}`;
                     youtubeLinkNode.style.display = "inline-block";
