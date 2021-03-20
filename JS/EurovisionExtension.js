@@ -123,7 +123,7 @@ class EurovisionExtension {
                 const youtubeNode = c.children[3];
                 const competitorNode = c.children[2];
                 const linkNode = competitorNode.children[0];
-                const spanNode = linkNode.children[1];
+                const spanNode = linkNode.querySelector("span");
 
                 const text = spanNode?.innerText;
                 
